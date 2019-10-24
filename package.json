@@ -1,32 +1,35 @@
 {
-  "name": "CHANGE-TO-YOUR-APP-NAME",
+  "name": "FileExplorer-Electron",
   "version": "1.0.0",
-  "description": "Electron Template project with platform builder - CHANGE-FOR-EACH-PROJECT",
+  "description": "Prototype File Explorer built in Electron",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
     "pack": "electron-builder --dir",
     "dist": "electron-builder"
   },
-  "repository": "https://CHANGE-TO-YOUR-GITHUB-URL",
+  "repository": "https://github.com/raddevus/FileExplorer-Electron",
   "keywords": [
     "Electron",
-    "quick",
-    "start",
-    "tutorial",
-    "demo"
+    "Files",
+    "File Explorer",
+    "Explorer",
+    "prototype"
   ],
-  "author": "CHANGE-TO-YOUR-NAME",
+  "author": "roger deutsch",
   "license": "CC0-1.0",
   "devDependencies": {
     "electron": "^6.0.12",
     "electron-builder": "^21.2.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "jquery": "^3.4.1"
+  },
   "build": {
-    "appId": "com.YOUR-WEB-SITE.YOUR-APP-NAME",
-    "copyright": "Copyright © 2019 YOUR-NAME",
-    "productName": "APP-NAME",
+    "appId": "app.actionmobile.FileExplorer-Electron",
+    "copyright": "Copyright © 2019 roger deutsch",
+    "productName": "FileExplorer-Electron",
     "electronVersion": "6.0.10",
     "asar": true,
     "directories": {
@@ -34,9 +37,9 @@
       "buildResources": "build"
     },
     "linux": {
-      "category": "Utility.Passwords",
+      "category": "Utility",
       "icon": "app.png",
-      "executableName": "EXE-NAME-IF-DIFF-THAN-APP"
+      "executableName": "FileExplorer-Electron"
     },
     "win": {
       "icon": "build/app.png"

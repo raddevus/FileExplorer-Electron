@@ -2,15 +2,88 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Hello World!</title>
+    <title>Crypto-Electron</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <script src="js/aes.js"></script>
   </head>
   <body>
-    <h1>Hello World!</h1>
+    <div>
     We are using Node.js <span id="node-version"></span>,
     Chromium <span id="chrome-version"></span>,
     and Electron <span id="electron-version"></span>.
+    </div>
+    
+    <div id="encrypted">
+    </div>
+    <div id="decrypted">
+    </div>
+    <div>
+      <ul id="treeNode" class="folderTree">
+      </ul>
+    </div>
+    <div class="form-group">
+    <select id="specialFolders" class="form-control">
+        <option value="appData">appData</option>
+        <option value="desktop">Desktop</option>
+        <option value="documents">Documents</option>
+        <option value="downloads">Downloads</option>
+        <option value="home">Home</option>
+        <option value="music">Music</option>
+        <option value="pictures">Pictures</option>
+        <option value="temp">Temp</option>
+        <option value="userData">userData</option>
+        <option value="videos">Videos</option>
+      </select>
+    </div>
+    <h5 id="appsRootPath">placeholder</h5>
+    <div id="formBody" class="row">
+        <div class="col-sm-8" >
+          <select id="PathListBox" 
+            class="RadListBox form-control" 
+            size="5">
+          </select>
+        </div>
+    </div>
+    <h5 id="sourcePath"></h5>
+    <div id="formBody" class="row">
+      <div class="col-sm-8" >
+      <select id="FileListBox" 
+        class="RadListBox form-control" 
+        size="5">
+      </select>
+      <button onclick="readFile()"class="btn btn-sm btn-outline-primary">Encrypt</button>
+      <button onclick="getFileList()"class="btn btn-sm btn-outline-primary">List Files</button>
+      <button onclick="getAllDirsButtonClick('#treeNode','')"class="btn btn-sm btn-outline-primary">Get Dirs</button>
+      </div>
+    </div>
+    <script>
+        var plainText = "This is a an extremely long message <strong> with </strong> CRLF \n and other items in it.";
+        var key = CryptoJS.enc.Hex.parse('76CE9BBA9487266738E3C4F0B3CFA4BE0C0EBA52ED1C3C425E06900442EFE5E1'); 
+        var iv = CryptoJS.enc.Hex.parse('76CE9BBA9487266738E3C4F0B3CFA4BE'); 
+        var encrypted = CryptoJS.AES.encrypt(plainText, key, { iv: iv }); 
+        //var encrypted = CryptoJS.AES.encrypt(plainText, "Secret"); 
+        //var cipherText = CryptoJS.enc.Hex.parse(String(encrypted.ciphertext));
+        //console.log("cipherText : " + cipherText);
+        document.getElementById("encrypted").innerHTML = encrypted;
+        var decrypted = CryptoJS.AES.decrypt(encrypted,  key, { iv: iv });
+        //var decrypted = CryptoJS.AES.decrypt(encrypted, "Secret");
+        console.log("decrypted: " + decrypted.toString());
+        let plainTextOut = decodeHexString(decrypted.toString());
+        console.log(plainTextOut);
+        document.getElementById("decrypted").innerHTML = plainTextOut; 
+        function decodeHexString(stringOfHexBytes){
+            var localPlainText = "";
+            var currentByte = "";
+            for (var x = 0;x < stringOfHexBytes.length;x++){
+             currentByte = stringOfHexBytes[x] + stringOfHexBytes[++x]; 
+             localPlainText += String.fromCharCode(parseInt(currentByte,16));
+            }
+        return localPlainText;
+        }
+    </script>
 
     <!-- You can also require other files to run in this process -->
+    <script src="js/treeNode.js"></script>
     <script src="./renderer.js"></script>
   </body>
 </html>

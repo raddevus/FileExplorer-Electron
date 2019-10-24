@@ -7,12 +7,11 @@ const path = require('path')
 let mainWindow
 
 function createWindow () {
-  
   // Create the browser window.
   mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
-    icon: 'app.png',
+    icon: 'crypto.png',
     webPreferences: {
       nodeIntegration: true,
       preload: path.join(__dirname, 'preload.js')

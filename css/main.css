@@ -1,0 +1,51 @@
+@import url('../node_modules/bootstrap/dist/css/bootstrap.min.css');
+.RadListBox{width:100%;}
+.topPad{margin-top: 7px;}
+body {padding: 8px 5px 5px 5px;}
+
+/* ############### INCORPORATED FROM https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_treeview  */
+ul, #treeNode {
+    list-style-type: none;
+  }
+  
+  #treeNode {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .caret {
+    cursor: pointer;
+    -webkit-user-select: none; /* Safari 3.1+ */
+    -moz-user-select: none; /* Firefox 2+ */
+    -ms-user-select: none; /* IE 10+ */
+    user-select: none;
+  }
+  
+  .caret::before {
+    content: "\25B6";
+    color: black;
+    display: inline-block;
+    margin-right: 6px;
+  }
+  
+  .caret-down::before {
+    -ms-transform: rotate(90deg); /* IE 9 */
+    -webkit-transform: rotate(90deg); /* Safari */
+    transform: rotate(90deg);  
+  }
+
+  ul .nested {background: lightblue; margin-left:-25px;}
+  
+  .nested {
+    display: none;
+  }
+  
+  .active {
+    display: block;
+  }
+
+  .folderTree{
+    height: 100px;
+    overflow:auto;
+  }
+/* ############### END STYLES FROM https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_treeview  */
